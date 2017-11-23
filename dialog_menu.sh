@@ -1,6 +1,6 @@
 #!/bin/bash
 #written by Sven Herz	©
-#dialog --prgbox 'Informationen zu ihrem Gerät :-)' "lsb_release -a" 10 40;
+
 
 test=`apt list dialog 2> /dev/null`
 if [[ $test != *"[installiert]"* ]]
