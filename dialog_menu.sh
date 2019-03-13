@@ -494,7 +494,7 @@ do
             1 'Auf $port lauschen für Text'\
             2 'Auf $port lauschen zum Datein empfangen in $pfad'\
             3 'Verbindung zu $ip auf $port aufbauen für Text'\
-            4 'Verbindung zu $ip auf $port aufbauen für Datein'\
+            4 'Verbindung zu $ip auf $port aufbauen zum Datein senden'\
             3>&2 2>&1 1>&3;`
             dialog --clear;
 
@@ -527,6 +527,22 @@ do
 
                             fi;
 
+                    elif [ $s = '4' ]
+                        then
+                            ip=`dialog --colors --inputbox "Bitte den \Zb\Z1Ziel IP\Z0\ZB angeben" 0 0 \
+                            3>&2 2>&1 1>&3`;
+                            port=`dialog --colors --inputbox "Bitte den \Zb\Z1Ziel Port\Z0\ZB angeben zum Senden von Datein" 0 0  \
+                            3>&2 2>&1 1>&3`;
+                            pfad=`dialog --dselect /home/$USER/ 0 0 \
+                            3>&2 2>&1 1>&3`;
+                            passwd=`dialog --passwordbox "Bitte Sudo Passort eingeben. Ab /home/$USER wird kein Passwort benötigt" 0 0\
+                            3>&2 2>&1 1>&3`;
+
+                            if [ $ip ] && [ $port ] && [ $pfad ];
+                               then
+                               dialog --scrollbar --prgbox "Test [!!!]" "sudo nc $ip $port < $pfad" 10 70;
+                               read -sn1;
+                            fi;
 
 
 
