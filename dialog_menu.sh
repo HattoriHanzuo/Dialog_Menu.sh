@@ -535,12 +535,12 @@ do
                             3>&2 2>&1 1>&3`;
                             pfad=`dialog --dselect /home/$USER/ 0 0 \
                             3>&2 2>&1 1>&3`;
-                            passwd=`dialog --passwordbox "Bitte Sudo Passort eingeben. Ab /home/$USER wird kein Passwort benötigt" 0 0\
+                            passwd=`dialog --passwordbox "Bitte Sudo Passort eingeben. Ab /home/$USER wird kein Passwort benötigt" 0 0 \
                             3>&2 2>&1 1>&3`;
-
-                            if [ $ip ] && [ $port ] && [ $pfad ];
+                            if [ $ip ] && [ $port ] && [ $pfad ] && [ $passwd ];
                                then
-                               dialog --scrollbar --prgbox "Test [!!!]" "sudo nc $ip $port < $pfad" 10 70;
+                               echo $passwd | sudo -S dialog --scrollbar --prgbox "Test [!!!]" "sudo nc $ip $port < $pfad" 10 70 >/dev/null;
+
                                read -sn1;
                             fi;
 
