@@ -533,7 +533,7 @@ do
                             3>&2 2>&1 1>&3`;
                             port=`dialog --colors --inputbox "Bitte den \Zb\Z1Ziel Port\Z0\ZB angeben zum Senden von Datein" 0 0  \
                             3>&2 2>&1 1>&3`;
-                            pfad=`dialog --dselect /home/$USER/ 0 0 \
+                            pfad=`dialog --dselect /home/$USER/ 40 40 \
                             3>&2 2>&1 1>&3`;
                             passwd=`dialog --passwordbox "Bitte Sudo Passort eingeben. Ab /home/$USER wird kein Passwort benötigt" 0 0 \
                             3>&2 2>&1 1>&3`;
